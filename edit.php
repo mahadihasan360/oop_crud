@@ -3,20 +3,34 @@ include_once "autoload.php";
 
 $user = new User;
 
-if(isset($_GET["edit_id"])){
+	// Isseting Form
 
-    $id = $_GET["edit_id"];
+	if(isset($_POST["add"])){
 
-    $data = $user -> userEditKoro($id);
+		// Get Values
+		$name = $_POST["name"];
+		$email = $_POST["email"];
+		$cell = $_POST["cell"];
+		$username = $_POST["username"];
 
-    $edit_data = $data -> fetch_object();
+        $id = $_GET["edit_id"];
+        // user update
+		$user -> userUpdate($id,$name,$email,$cell,$username);
+        header('Location:index.php');
+	}
+
+	
+    // User Edit
+    if(isset($_GET["edit_id"])){
+
+        $id = $_GET["edit_id"];
+
+        $data = $user -> userEdit($id);
+
+        $edit_data = $data ->fetch_object();
 
 
-
-    
-
-}
-
+    }
 
 
 
@@ -47,26 +61,26 @@ if(isset($_GET["edit_id"])){
                     <form action="" method="POST">
                         <div class="form-group">
                             <label for="">Name</label>
-                            <input name="name" class="form-control" value="<?php echo $data->name?>" type="text">
+                            <input name="name" class="form-control" value="<?php echo $edit_data->name?>" type="text">
                         </div>
 
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input name="email" class="form-control" type="text">
+                            <input name="email" value="<?php echo $edit_data->email?>" class="form-control" type="text">
                         </div>
 
                         <div class="form-group">
                             <label for="">Cell</label>
-                            <input name="cell" class="form-control" type="text">
+                            <input name="cell" value="<?php echo $edit_data->cell?>" class="form-control" type="text">
                         </div>
 
                         <div class="form-group">
                             <label for="">Username</label>
-                            <input name="username" class="form-control" type="text">
+                            <input name="username" value="<?php echo $edit_data->username?>" class="form-control" type="text">
                         </div>
 
                         <div class="form-group">
-                            <input name="add" class="btn btn-primary" type="submit" value="Add">
+                            <input name="add" class="btn btn-primary" type="submit" value="Update">
                         </div>
                     </form>
                     <a class="btn btn-primary btn-sm" href="index.php">Back</a>

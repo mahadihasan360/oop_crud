@@ -33,11 +33,28 @@ class User extends Database {
 
     // Edit User Account
 
-    public function userEditKoro($id){
+    public function userEdit($id){
 
-        parent::Find("users",$id);
+        return parent::Find("users",$id);
 
     }
+
+    // View User Account
+
+    public function userView($id){
+
+        return parent::Find("users",$id);
+
+    }
+
+    // Update User Data
+
+    public function userUpdate($id,$name,$email,$cell,$username){
+
+        parent::Update("UPDATE users SET name='$name', email='$email', cell='$cell', username ='$username' WHERE id='$id'");
+
+    }
+
 
 
 

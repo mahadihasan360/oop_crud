@@ -93,7 +93,7 @@ if(isset($_GET["delete_id"])){
 							<td><?php echo $d -> cell?></td>
 							<td><img src="assets/media/img/pp_photo/istockphoto-615279718-612x612.jpg" alt=""></td>
 							<td>
-								<a class="btn btn-sm btn-info" href="#">View</a>
+								<a class="btn btn-sm btn-info" href="view.php?view_id=<?php echo $d -> id?>">View</a>
 								<a class="btn btn-sm btn-warning" href="edit.php?edit_id=<?php echo $d -> id?>">Edit</a>
 								<a class="btn btn-sm btn-danger" href="?delete_id=<?php echo $d -> id?>">Delete</a>
 							</td>

@@ -41,6 +41,7 @@ abstract class Database {
     protected function Find ($table,$id) {
 
         return $this -> connection () -> query("SELECT * FROM $table WHERE id='$id'");
+        
     }
 
     // Delete data
@@ -53,8 +54,9 @@ abstract class Database {
 
     // Update data
 
-    protected function Update () {
+    protected function Update ($sql) {
 
+        $this -> connection () -> query("$sql");
     }
 
     // Where data
